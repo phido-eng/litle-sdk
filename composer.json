@@ -7,6 +7,11 @@
             "email": "nkrantz23@gmail.com"
         }
     ],
+    "source": {
+        "url": "git://github.com/nkrantz23/litle-sdk-for-php",
+        "type": "git",
+        "reference": "master"
+    },
     "require": {
 
     }
