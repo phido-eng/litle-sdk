@@ -84,7 +84,7 @@ class Obj2xml {
 
 	public static function getConfig($data)
 	{
-		if (!$cfg = LitleOnlineRequest::configOverride()) {
+		if (!$cfg = LitleOnlineRequest::$configOverride) {
 			@$config_array = parse_ini_file('litle_SDK_config.ini');
 		} else {
 			$config_array = $cfg;
