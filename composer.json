@@ -15,5 +15,10 @@
     },
     "require": {
 
+    },
+    "autoload": {
+        "classpath": [
+            "lib/LitleOnline.php"
+        ]
     }
 }
