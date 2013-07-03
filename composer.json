@@ -1,0 +1,13 @@
+{
+    "name": "nkrantz/litle-sdk-for-php",
+    "description": "Modified litle sdk for PHP",
+    "authors": [
+        {
+            "name": "Nate Krantz",
+            "email": "nkrantz23@gmail.com"
+        }
+    ],
+    "require": {
+
+    }
+}
