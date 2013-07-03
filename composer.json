@@ -17,7 +17,7 @@
 
     },
     "autoload": {
-        "classpath": [
+        "files": [
             "lib/LitleOnline.php"
         ]
     }
