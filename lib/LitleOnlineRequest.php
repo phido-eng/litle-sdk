@@ -26,11 +26,19 @@
 class LitleOnlineRequest
 {
 	private $useSimpleXml = false;
+
+	public static $configOverride;
 	
-	public function __construct($treeResponse=false)
+	public function __construct($config = [], $treeResponse=false)
 	{
 		$this->useSimpleXml = $treeResponse;	
 		$this->newXML = new LitleXmlMapper();
+
+		if (!empty($config)) {
+			static::$configOverride = $config;
+		} else {
+			static::$configOverride = false;
+		}
 	}
 
 	public function authorizationRequest($hash_in)
