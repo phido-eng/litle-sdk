@@ -61,5 +61,47 @@ class XMLParser{
 	{
 		return $dom->saveXML($dom);
 	}
+
+	/**
+	 * Convert an XML DOM document to an array
+	 * 
+	 * @param  DOMElement|DOMDocument $root
+	 * @return array
+	 */
+	public static function xmlDOMDocumentToArray($root) {
+		$result = array();
+
+        if ($root->hasAttributes()) {
+            $attrs = $root->attributes;
+            foreach ($attrs as $attr) {
+                $result['@attributes'][$attr->name] = $attr->value;
+            }
+        }
+
+        if ($root->hasChildNodes()) {
+            $children = $root->childNodes;
+            if ($children->length == 1) {
+                $child = $children->item(0);
+                if ($child->nodeType == XML_TEXT_NODE) {
+                    $result['_value'] = $child->nodeValue;
+                    return count($result) == 1 ? $result['_value'] : $result;
+                }
+            }
+            $groups = array();
+            foreach ($children as $child) {
+                if (!isset($result[$child->nodeName])) {
+                    $result[$child->nodeName] = self::xmlDOMDocumentToArray($child);
+                } else {
+                    if (!isset($groups[$child->nodeName])) {
+                        $result[$child->nodeName] = array($result[$child->nodeName]);
+                        $groups[$child->nodeName] = 1;
+                    }
+                    $result[$child->nodeName][] = self::xmlDOMDocumentToArray($child);
+                }
+            }
+        }
+
+        return $result;
+	}
 }
 ?>
