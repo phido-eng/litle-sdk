@@ -378,7 +378,7 @@ class LitleOnlineRequest
 		return $hash_out;
 	}
 
-	private function processRequest($hash_out, $hash_in, $type, $choice1 = null, $choice2 = null)
+	private function processRequest($hash_out, $hash_in, $type, $choice1 = [], $choice2 = [])
 	{
 	
 		$hash_config = LitleOnlineRequest::overideconfig($hash_in);
